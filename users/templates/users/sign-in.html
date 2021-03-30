@@ -21,6 +21,13 @@
                 <form id="sign_in" method="POST">
                     {% csrf_token %}
                     <div class="msg">Sign in to start your session</div>
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                        {% for error in form.non_field_errors %}
+                            <p> {{ error }}</p>
+                        {% endfor %}
+                        </div>
+                    {%  endif %}
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
