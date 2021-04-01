@@ -7,6 +7,7 @@ class course_master(models.Model):
     name=models.CharField(max_length=50)
     description=models.TextField()
     duration=models.IntegerField()
+    fees=models.IntegerField()
     status=models.CharField(max_length=20,choices=[('Active','Active'),('Deactive','Deactive')])
     user=models.ForeignKey(User,on_delete=models.PROTECT,related_name='course')
 

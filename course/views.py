@@ -8,3 +8,8 @@ class NewCourse(CreateView):
 
 # model_form.html
 #course_master_form.html
+
+class ViewCourse(ListView):
+    model = course_master
+    context_object_name = 'courses'
+

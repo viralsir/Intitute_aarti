@@ -1,4 +1,10 @@
 {% extends "users/layout.html" %}
+{% load crispy_forms_field %}
+{% load static  %}
+{% block extra_head_lib %}
+    <!-- Bootstrap Select Css -->
+    <link href="{% static 'plugins/bootstrap-select/css/bootstrap-select.css'%}" rel="stylesheet" />
+{% endblock %}
 {% block body %}
   <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -20,47 +26,54 @@
                         </div>
                         <div class="body">
                             <form id="form_validation" method="POST" novalidate="novalidate">
+                               {% csrf_token %}
                                 <div class="form-group form-float">
-                                    <div class="form-line error">
-                                        <input type="text" class="form-control" name="name" required="" aria-required="true">
+                                    <div class="form-line">
+                                       {% crispy_field form.name %}
                                         <label class="form-label">Name</label>
                                     </div>
-                                <label id="name-error" class="error" for="name">This field is required.</label></div>
+                                </div>
                                 <div class="form-group form-float">
-                                    <div class="form-line error">
-                                        <input type="text" class="form-control" name="surname" required="" aria-required="true" aria-invalid="true">
-                                        <label class="form-label">Surname</label>
+                                    <div class="form-line">
+                                        {% crispy_field form.description %}
+                                        <label class="form-label">description</label>
                                     </div>
-                                <label id="surname-error" class="error" for="surname">This field is required.</label></div>
+                                </div>
                                 <div class="form-group form-float">
-                                    <div class="form-line error">
-                                        <input type="email" class="form-control" name="email" required="" aria-required="true">
-                                        <label class="form-label">Email</label>
+                                    <div class="form-line">
+                                        {% crispy_field form.duration %}
+                                        <label class="form-label">Duration</label>
                                     </div>
-                                <label id="email-error" class="error" for="email">This field is required.</label></div>
-                                <div class="form-group">
-                                    <input type="radio" name="gender" id="male" class="with-gap" aria-required="true">
-                                    <label for="male">Male</label>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        {% crispy_field form.fees %}
+                                        <label class="form-label">Fees:</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                       <p>
+                                        <b>Status</b>
+                                    </p>
+                                        {% crispy_field form.status 'class' 'btn-group bootstrap-select form-control show-tick' %}
 
-                                    <input type="radio" name="gender" id="female" class="with-gap">
-                                    <label for="female" class="m-l-20">Female</label>
-                                <label id="gender-error" class="error" for="gender">This field is required.</label></div>
-                                <div class="form-group form-float">
-                                    <div class="form-line error">
-                                        <textarea name="description" cols="30" rows="5" class="form-control no-resize" required="" aria-required="true"></textarea>
-                                        <label class="form-label">Description</label>
                                     </div>
-                                <label id="description-error" class="error" for="description">This field is required.</label></div>
+                                </div>
                                 <div class="form-group form-float">
-                                    <div class="form-line error">
-                                        <input type="password" class="form-control" name="password" required="" aria-required="true">
-                                        <label class="form-label">Password</label>
+                                    <div class="form-line">
+                                        <p>
+                                        <b>Created by </b>
+                                    </p>
+                                        {% crispy_field form.user 'class' 'btn-group bootstrap-select form-control show-tick' %}
+
                                     </div>
-                                <label id="password-error" class="error" for="password">This field is required.</label></div>
+                                </div>
+
                                 <div class="form-group">
-                                    <input type="checkbox" id="checkbox" name="checkbox" aria-required="true">
+                                    <input type="checkbox" id="checkbox" name="checkbox">
                                     <label for="checkbox">I have read and accept the terms</label>
-                                <label id="checkbox-error" class="error" for="checkbox">This field is required.</label></div>
+                                </div>
                                 <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
                             </form>
                         </div>
