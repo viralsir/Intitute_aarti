@@ -13,3 +13,6 @@ class ViewCourse(ListView):
     model = course_master
     context_object_name = 'courses'
 
+class UpdateCourse(UpdateView):
+    model = course_master
+    fields = '__all__'

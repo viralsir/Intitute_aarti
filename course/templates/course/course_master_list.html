@@ -7,6 +7,8 @@
 {% endblock %}
 {% block body %}
   <div class="row clearfix">
+
+
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
@@ -38,6 +40,7 @@
                                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 101px;">Duration</th>
                                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 46px;">Fees</th>
                                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 95px;">Status</th>
+                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 95px;">Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -47,6 +50,8 @@
                                             <th rowspan="1" colspan="1">Duration</th>
                                             <th rowspan="1" colspan="1">Fees</th>
                                             <th rowspan="1" colspan="1">Status</th>
+                                            <th rowspan="1" colspan="1">Action</th>
+
 
                                         </tr>
                                     </tfoot>
@@ -58,7 +63,9 @@
                                             <td>{{ course.duration }}</td>
                                             <td>{{ course.fees }}</td>
                                             <td>{{ course.status }}</td>
-
+                                            <td>
+                                                <a href="{% url 'course-update' course.id %}">Update</a>
+                                            </td>
                                         </tr>
                                    {% endfor %}
                                   </tbody>
@@ -69,7 +76,7 @@
                     </div>
                 </div>
             </div>
-
+  </div>
 {% endblock %}
 {% block extra_js_lib %}
     <!-- Jquery DataTable Plugin Js -->
