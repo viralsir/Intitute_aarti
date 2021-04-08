@@ -4,6 +4,12 @@
 {% block extra_head_lib %}
     <!-- Bootstrap Select Css -->
     <link href="{% static 'plugins/bootstrap-select/css/bootstrap-select.css'%}" rel="stylesheet" />
+      <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="{% static 'plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css'%}" rel="stylesheet" />
+
+    <!-- Bootstrap DatePicker Css -->
+    <link href="{% static 'plugins/bootstrap-datepicker/css/bootstrap-datepicker.css'%}" rel="stylesheet" />
+
 {% endblock %}
 {% block body %}
   <div class="row clearfix">
@@ -32,12 +38,20 @@
                                        {% crispy_field form.name %}
                                         <label class="form-label">Name</label>
                                     </div>
-                                    {%  if form.name.errors %}
+                                    {%  if form.name_errors %}
                                         {% for error in form.name.errors %}
                                             <label id="name-error" class="error" for="name"><b>{{ error }}</b></label>
                                         {% endfor %}
                                     {% endif %}
 
+
+                                </div>
+                                 <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" class="datepicker form-control" placeholder="Please choose date & time...">
+
+
+                                    </div>
 
                                 </div>
                                 <div class="form-group form-float">

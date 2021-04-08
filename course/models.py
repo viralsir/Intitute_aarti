@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from datetime import datetime
 
 # Create your models here.
 class course_master(models.Model):
@@ -8,6 +9,7 @@ class course_master(models.Model):
     description=models.TextField()
     duration=models.IntegerField()
     fees=models.IntegerField()
+    cdate=models.DateField(default=datetime.utcnow,verbose_name="Creation Date")
     status=models.CharField(max_length=20,choices=[('Active','Active'),('Deactive','Deactive')])
     user=models.ForeignKey(User,on_delete=models.PROTECT,related_name='course')
 
